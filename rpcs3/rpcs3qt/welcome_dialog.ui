@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Welcome to RPCS3</string>
+   <string>Welcome to Ikiw Gaming</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../resources.qrc">
@@ -95,7 +95,7 @@
              </font>
             </property>
             <property name="text">
-             <string>RPCS3 PlayStation 3 Emulator</string>
+             <string>Ikiw Gaming PlayStation 3 Emulator</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -177,7 +177,7 @@
         </font>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;RPCS3 does not condone piracy. You must dump your own games.&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600; color:#53d8ff;&quot;&gt;Ikiw Gaming does not condone piracy. You must dump your own games.&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>

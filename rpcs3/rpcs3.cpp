@@ -802,12 +802,13 @@ int run_rpcs3(int argc, char** argv)
 
 	QScopedPointer<QCoreApplication> app(create_application(qt_argv));
 	app->setApplicationVersion(QString::fromStdString(rpcs3::get_version().to_string()));
-	app->setApplicationName("RPCS3");
+	app->setApplicationName("Ikiw Gaming");
+	QGuiApplication::setApplicationDisplayName("Ikiw Gaming");
 	app->setOrganizationName("RPCS3");
 
 	// Command line args
 	static QCommandLineParser parser;
-	parser.setApplicationDescription("Welcome to RPCS3 command line.");
+	parser.setApplicationDescription("Welcome to Ikiw Gaming command line.");
 	parser.addPositionalArgument("(S)ELF", "Path for directly executing a (S)ELF");
 	parser.addPositionalArgument("[Args...]", "Optional args for the executable");
 

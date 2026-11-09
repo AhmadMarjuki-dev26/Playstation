@@ -214,7 +214,7 @@ void main_window::Init()
 	CreateConnects();
 
 	setMinimumSize(350, minimumSizeHint().height());    // seems fine on win 10
-	setWindowTitle(QString::fromStdString("RPCS3 " + rpcs3::get_verbose_version()));
+	setWindowTitle(QString::fromStdString("Ikiw Gaming " + rpcs3::get_verbose_version()));
 
 	Q_EMIT RequestGlobalStylesheetChange();
 	ConfigureGuiFromSettings();
@@ -1012,7 +1012,7 @@ bool main_window::HandlePackageInstallation(main_window* mw, QStringList file_pa
 
 	if (mw)
 	{
-		pdlg = std::make_unique<progress_dialog>(tr("RPCS3 Package Installer"), tr("Installing package, please wait..."), tr("Cancel"), 0, 1000, false, mw);
+		pdlg = std::make_unique<progress_dialog>(tr("Ikiw Gaming Package Installer"), tr("Installing package, please wait..."), tr("Cancel"), 0, 1000, false, mw);
 		pdlg->setAutoClose(false);
 		pdlg->show();
 	}
@@ -1299,7 +1299,7 @@ bool main_window::HandlePackageInstallation(main_window* mw, QStringList file_pa
 
 				QMessageBox::critical(mw, tr("Failure!"), tr("Failed to install software from package:\n%1!"
 					"\nThis is very likely caused by external interference from a faulty anti-virus software."
-					"\nPlease add RPCS3 to your anti-virus\' whitelist or use better anti-virus software.").arg(package->path));
+					"\nPlease add Ikiw Gaming to your anti-virus\' whitelist or use better anti-virus software.").arg(package->path));
 			}
 		}
 	}
@@ -1341,7 +1341,7 @@ void main_window::InstallPup(main_window* mw, QString file_path)
 	}
 	else if (mw)
 	{
-		if (QMessageBox::question(mw, tr("RPCS3 Firmware Installer"), tr("Install firmware: %1?").arg(file_path),
+		if (QMessageBox::question(mw, tr("Ikiw Gaming Firmware Installer"), tr("Install firmware: %1?").arg(file_path),
 			QMessageBox::Yes | QMessageBox::No, QMessageBox::No) != QMessageBox::Yes)
 		{
 			gui_log.notice("Firmware: Cancelled installation from drop. File: %s", file_path);
@@ -1629,7 +1629,7 @@ void main_window::HandlePupInstallation(main_window* mw, const QString& file_pat
 	}
 
 	if (version_string < cur_version && mw &&
-		QMessageBox::question(mw, tr("RPCS3 Firmware Installer"), tr("Old firmware detected.\nThe newest firmware version is %1 and you are trying to install version %2\nContinue installation?").arg(QString::fromUtf8(cur_version.data(), ::size32(cur_version)), QString::fromStdString(version_string)),
+		QMessageBox::question(mw, tr("Ikiw Gaming Firmware Installer"), tr("Old firmware detected.\nThe newest firmware version is %1 and you are trying to install version %2\nContinue installation?").arg(QString::fromUtf8(cur_version.data(), ::size32(cur_version)), QString::fromStdString(version_string)),
 			QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No)
 	{
 		return;
@@ -1639,7 +1639,7 @@ void main_window::HandlePupInstallation(main_window* mw, const QString& file_pat
 	{
 		gui_log.warning("Reinstalling firmware: old=%s, new=%s", installed, version_string);
 
-		if (mw && QMessageBox::question(mw, tr("RPCS3 Firmware Installer"), tr("Firmware of version %1 has already been installed.\nOverwrite current installation with version %2?").arg(QString::fromStdString(installed), QString::fromStdString(version_string)),
+		if (mw && QMessageBox::question(mw, tr("Ikiw Gaming Firmware Installer"), tr("Firmware of version %1 has already been installed.\nOverwrite current installation with version %2?").arg(QString::fromStdString(installed), QString::fromStdString(version_string)),
 			QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No)
 		{
 			gui_log.warning("Reinstallation of firmware aborted.");
@@ -1654,7 +1654,7 @@ void main_window::HandlePupInstallation(main_window* mw, const QString& file_pat
 		// Remove possibly PS3 fonts from database
 		QFontDatabase::removeAllApplicationFonts();
 
-		pdlg = std::make_unique<progress_dialog>(tr("RPCS3 Firmware Installer"), tr("Installing firmware version %1\nPlease wait...").arg(QString::fromStdString(version_string)), tr("Cancel"), 0, static_cast<int>(update_filenames.size()), false, mw);
+		pdlg = std::make_unique<progress_dialog>(tr("Ikiw Gaming Firmware Installer"), tr("Installing firmware version %1\nPlease wait...").arg(QString::fromStdString(version_string)), tr("Cancel"), 0, static_cast<int>(update_filenames.size()), false, mw);
 		pdlg->show();
 	}
 
@@ -1699,7 +1699,7 @@ void main_window::HandlePupInstallation(main_window* mw, const QString& file_pat
 					gui_log.error("Error while installing firmware: TAR contents are invalid. (package=%s)", update_filename);
 					critical(tr("The firmware contents could not be extracted."
 						"\nThis is very likely caused by external interference from a faulty anti-virus software."
-						"\nPlease add RPCS3 to your anti-virus\' whitelist or use better anti-virus software."));
+						"\nPlease add Ikiw Gaming to your anti-virus\' whitelist or use better anti-virus software."));
 
 					progress = -1;
 					return;

@@ -52,6 +52,7 @@
 #include <QTextDocument>
 #include <QStyleFactory>
 #include <QStyleHints>
+#include <QPalette>
 
 #include <clocale>
 
@@ -164,7 +165,7 @@ int gui_application::exec()
 			msg->setStandardButtons(QMessageBox::Yes | QMessageBox::No);
 			msg->setDefaultButton(QMessageBox::No);
 			msg->setText(gui::utils::make_paragraph(tr(
-				"Warning! You're running an unofficial %0 build of RPCS3.\n"
+				"Warning! You're running an unofficial %0 build of Ikiw Gaming, based on RPCS3.\n"
 				"You will get no official support for this build.\n"
 				"Issues opened on the RPCS3 GitHub related to %0 builds are not allowed and will be closed.\n"
 				"We recommend to download and use the official build from the %1.\n"
@@ -262,7 +263,7 @@ int gui_application::exec()
 									tr("The current limit of maximum file descriptors is too low.\n"
 									"Some games will crash.\n"
 									"\n"
-									"Please increase the limit before running RPCS3."));
+									"Please increase the limit before running Ikiw Gaming."));
 		}
 	});
 
@@ -973,11 +974,11 @@ void gui_application::create_callbacks()
 			mb->setIcon(QMessageBox::Critical);
 			mb->setStandardButtons(QMessageBox::Yes | QMessageBox::No);
 			mb->setDefaultButton(QMessageBox::No);
-			mb->button(QMessageBox::Yes)->setText(tr("Terminate RPCS3"));
+			mb->button(QMessageBox::Yes)->setText(tr("Terminate Ikiw Gaming"));
 			mb->button(QMessageBox::No)->setText(tr("Keep Waiting"));
 
 			QString text_base = tr("Waiting for %0 second(s) already to stop emulation without success."
-			                       "\nKeep waiting or terminate RPCS3 unsafely at your own risk?");
+			                       "\nKeep waiting or terminate Ikiw Gaming unsafely at your own risk?");
 
 			mb->setText(text_base.arg(10));
 			mb->layout()->setSizeConstraint(QLayout::SetFixedSize);
@@ -1015,7 +1016,7 @@ void gui_application::create_callbacks()
 		{
 			const auto half_seconds = std::make_shared<int>(1);
 
-			progress_dialog* pdlg = new progress_dialog(tr("Creating Save-State / Do Not Close RPCS3"), tr("Please wait..."), tr("Hide Progress"), 0, 100, true, m_main_window);
+			progress_dialog* pdlg = new progress_dialog(tr("Creating Save-State / Do Not Close Ikiw Gaming"), tr("Please wait..."), tr("Hide Progress"), 0, 100, true, m_main_window);
 			pdlg->setAutoReset(false);
 			pdlg->setAutoClose(true);
 			pdlg->show();
@@ -1250,6 +1251,8 @@ void gui_application::OnChangeStyleSheetRequest()
 		setStyle(style);
 	}
 
+	setPalette(style()->standardPalette());
+
 	const auto match_native_style = [&stylesheet_name]() -> QString
 	{
 		// Search for "native (<style>)"
@@ -1270,6 +1273,33 @@ void gui_application::OnChangeStyleSheetRequest()
 	if (stylesheet_name.isEmpty() || stylesheet_name == gui::DefaultStylesheet)
 	{
 		gui_log.notice("Using default stylesheet");
+		QPalette palette = style()->standardPalette();
+		palette.setColor(QPalette::Window, QColor("#0b1424"));
+		palette.setColor(QPalette::WindowText, QColor("#e6f2ff"));
+		palette.setColor(QPalette::Base, QColor("#101f35"));
+		palette.setColor(QPalette::AlternateBase, QColor("#162944"));
+		palette.setColor(QPalette::ToolTipBase, QColor("#dff4ff"));
+		palette.setColor(QPalette::ToolTipText, QColor("#08213b"));
+		palette.setColor(QPalette::Text, QColor("#e6f2ff"));
+		palette.setColor(QPalette::Button, QColor("#172d4a"));
+		palette.setColor(QPalette::ButtonText, QColor("#e6f2ff"));
+		palette.setColor(QPalette::BrightText, QColor("#53d8ff"));
+		palette.setColor(QPalette::Link, QColor("#53d8ff"));
+		palette.setColor(QPalette::LinkVisited, QColor("#8bb8ff"));
+		palette.setColor(QPalette::Highlight, QColor("#168bff"));
+		palette.setColor(QPalette::HighlightedText, QColor("#ffffff"));
+		palette.setColor(QPalette::PlaceholderText, QColor("#89a9cc"));
+		palette.setColor(QPalette::Light, QColor("#294b72"));
+		palette.setColor(QPalette::Midlight, QColor("#203c5c"));
+		palette.setColor(QPalette::Dark, QColor("#08111e"));
+		palette.setColor(QPalette::Mid, QColor("#345778"));
+		palette.setColor(QPalette::Shadow, QColor("#050a12"));
+		palette.setColor(QPalette::Disabled, QPalette::WindowText, QColor("#7892b1"));
+		palette.setColor(QPalette::Disabled, QPalette::Text, QColor("#7892b1"));
+		palette.setColor(QPalette::Disabled, QPalette::ButtonText, QColor("#7892b1"));
+		palette.setColor(QPalette::Disabled, QPalette::Highlight, QColor("#29496a"));
+		palette.setColor(QPalette::Disabled, QPalette::HighlightedText, QColor("#b1c8e0"));
+		setPalette(palette);
 		setStyleSheet(gui::stylesheets::default_style_sheet);
 		gui::custom_stylesheet_active = true;
 	}

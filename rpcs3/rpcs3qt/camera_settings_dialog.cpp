@@ -315,7 +315,7 @@ void camera_settings_dialog::handle_settings_change(int index)
 
 	if (!gui::utils::check_camera_permission(this,
 		[this, index](){ handle_settings_change(index); },
-		[this](){ QMessageBox::warning(this, tr("Camera permissions denied!"), tr("RPCS3 has no permissions to access cameras on this device.")); }))
+		[this](){ QMessageBox::warning(this, tr("Camera permissions denied!"), tr("Ikiw Gaming has no permissions to access cameras on this device.")); }))
 	{
 		return;
 	}

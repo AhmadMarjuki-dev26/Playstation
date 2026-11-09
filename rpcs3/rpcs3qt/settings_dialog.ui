@@ -3177,7 +3177,7 @@
                   <item>
                    <widget class="QCheckBox" name="exitOnStop">
                     <property name="text">
-                     <string>Exit RPCS3 when process finishes</string>
+                     <string>Exit Ikiw Gaming when process finishes</string>
                     </property>
                    </widget>
                   </item>
@@ -3198,7 +3198,7 @@
                   <item>
                    <widget class="QCheckBox" name="pauseOnFocusLoss">
                     <property name="text">
-                     <string>Pause emulation on RPCS3 focus loss</string>
+                     <string>Pause emulation when Ikiw Gaming loses focus</string>
                     </property>
                    </widget>
                   </item>
